@@ -26,8 +26,8 @@ Partial Class Edit_Inventory
         TxtQuanity = New TextBox()
         TxtPrice = New TextBox()
         TxtAddName = New TextBox()
-        BtnReplace = New Button()
-        BtnSelect = New Button()
+        BtnCancel = New Button()
+        Btnaccept = New Button()
         ListViewDataProduct = New ListView()
         ColumnHeader1 = New ColumnHeader()
         Price = New ColumnHeader()
@@ -39,6 +39,8 @@ Partial Class Edit_Inventory
         Label2 = New Label()
         Label1 = New Label()
         BtnDelete = New Button()
+        BtnQuantityProductTotal = New Button()
+        ComBoxElection = New ComboBox()
         CType(PictureUser, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -70,23 +72,23 @@ Partial Class Edit_Inventory
         TxtAddName.Size = New Size(100, 23)
         TxtAddName.TabIndex = 20
         ' 
-        ' BtnReplace
+        ' BtnCancel
         ' 
-        BtnReplace.Location = New Point(193, 445)
-        BtnReplace.Name = "BtnReplace"
-        BtnReplace.Size = New Size(75, 23)
-        BtnReplace.TabIndex = 19
-        BtnReplace.Text = "Repalce"
-        BtnReplace.UseVisualStyleBackColor = True
+        BtnCancel.Location = New Point(218, 381)
+        BtnCancel.Name = "BtnCancel"
+        BtnCancel.Size = New Size(75, 23)
+        BtnCancel.TabIndex = 19
+        BtnCancel.Text = "Cancele"
+        BtnCancel.UseVisualStyleBackColor = True
         ' 
-        ' BtnSelect
+        ' Btnaccept
         ' 
-        BtnSelect.Location = New Point(193, 362)
-        BtnSelect.Name = "BtnSelect"
-        BtnSelect.Size = New Size(75, 23)
-        BtnSelect.TabIndex = 18
-        BtnSelect.Text = "Select"
-        BtnSelect.UseVisualStyleBackColor = True
+        Btnaccept.Location = New Point(132, 381)
+        Btnaccept.Name = "Btnaccept"
+        Btnaccept.Size = New Size(75, 23)
+        Btnaccept.TabIndex = 18
+        Btnaccept.Text = "Accept"
+        Btnaccept.UseVisualStyleBackColor = True
         ' 
         ' ListViewDataProduct
         ' 
@@ -122,8 +124,8 @@ Partial Class Edit_Inventory
         ' 
         PictureUser.Location = New Point(85, 52)
         PictureUser.Name = "PictureUser"
-        PictureUser.Size = New Size(100, 50)
-        PictureUser.SizeMode = PictureBoxSizeMode.AutoSize
+        PictureUser.Size = New Size(64, 50)
+        PictureUser.SizeMode = PictureBoxSizeMode.StretchImage
         PictureUser.TabIndex = 16
         PictureUser.TabStop = False
         ' 
@@ -165,25 +167,45 @@ Partial Class Edit_Inventory
         ' 
         ' BtnDelete
         ' 
-        BtnDelete.Location = New Point(193, 513)
+        BtnDelete.Location = New Point(173, 410)
         BtnDelete.Name = "BtnDelete"
         BtnDelete.Size = New Size(75, 23)
         BtnDelete.TabIndex = 24
         BtnDelete.Text = "Delete"
         BtnDelete.UseVisualStyleBackColor = True
         ' 
+        ' BtnQuantityProductTotal
+        ' 
+        BtnQuantityProductTotal.Location = New Point(388, 643)
+        BtnQuantityProductTotal.Name = "BtnQuantityProductTotal"
+        BtnQuantityProductTotal.Size = New Size(144, 23)
+        BtnQuantityProductTotal.TabIndex = 25
+        BtnQuantityProductTotal.Text = "Quantity total product"
+        BtnQuantityProductTotal.UseVisualStyleBackColor = True
+        ' 
+        ' ComBoxElection
+        ' 
+        ComBoxElection.FormattingEnabled = True
+        ComBoxElection.Items.AddRange(New Object() {"Add", "Edit"})
+        ComBoxElection.Location = New Point(147, 352)
+        ComBoxElection.Name = "ComBoxElection"
+        ComBoxElection.Size = New Size(121, 23)
+        ComBoxElection.TabIndex = 26
+        ' 
         ' Edit_Inventory
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1189, 794)
+        Controls.Add(ComBoxElection)
+        Controls.Add(BtnQuantityProductTotal)
         Controls.Add(BtnDelete)
         Controls.Add(TxtMark)
         Controls.Add(TxtQuanity)
         Controls.Add(TxtPrice)
         Controls.Add(TxtAddName)
-        Controls.Add(BtnReplace)
-        Controls.Add(BtnSelect)
+        Controls.Add(BtnCancel)
+        Controls.Add(Btnaccept)
         Controls.Add(ListViewDataProduct)
         Controls.Add(PictureUser)
         Controls.Add(Label4)
@@ -201,8 +223,8 @@ Partial Class Edit_Inventory
     Friend WithEvents TxtQuanity As TextBox
     Friend WithEvents TxtPrice As TextBox
     Friend WithEvents TxtAddName As TextBox
-    Friend WithEvents BtnReplace As Button
-    Friend WithEvents BtnSelect As Button
+    Friend WithEvents BtnCancel As Button
+    Friend WithEvents Btnaccept As Button
     Friend WithEvents ListViewDataProduct As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents Price As ColumnHeader
@@ -214,4 +236,6 @@ Partial Class Edit_Inventory
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents BtnDelete As Button
+    Friend WithEvents BtnQuantityProductTotal As Button
+    Friend WithEvents ComBoxElection As ComboBox
 End Class

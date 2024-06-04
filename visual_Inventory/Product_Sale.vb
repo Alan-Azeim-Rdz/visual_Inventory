@@ -1,15 +1,15 @@
 ﻿
 
 Public Class Product_Sale
-    Public ReadOnly Property Name() As String
+    Public ReadOnly Property Name As String
 
-    Public WriteOnly Property Stock() As Integer
+    Public WriteOnly Property Stock As Integer
         Set(ByVal value As Integer)
             quantity = value
         End Set
     End Property
 
-    Public Property Price() As Double
+    Public Property Price As Double
 
     Private quantity As Integer
 
@@ -22,7 +22,6 @@ Public Class Product_Sale
 
     ' Constructor with Parameters
     Public Sub New(ByVal name As String, ByVal price As Double, ByVal quantity As Integer)
-        Me.New()
         Me.Name = name
         Me.Price = price
         Stock = quantity ' Enforces stock validation through the setter
@@ -37,7 +36,12 @@ Public Class Product_Sale
         End If
     End Sub
 
+    ' Method to Increase Stock (e.g., if a sale is removed)
+    Public Sub IncreaseStock(ByVal quantityToAdd As Integer)
+        quantity += quantityToAdd
+    End Sub
+
     Public Overrides Function ToString() As String
-        Return "el producto " & Name & " tiene a la venta " & quantity & " artículos disponibles y el precio de cada uno es " & Price
+        Return "el producto " & Name & " tiene a la venta " & quantity & " artuculos disponibles " & "y el precio de cada uno es " & Price
     End Function
 End Class

@@ -23,7 +23,6 @@ Partial Class menu
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         PictureImagePhoto = New PictureBox()
-        BtnInventory = New Button()
         BtnEditInventory = New Button()
         BtnCashRegister = New Button()
         CType(PictureImagePhoto, ComponentModel.ISupportInitialize).BeginInit()
@@ -39,18 +38,9 @@ Partial Class menu
         PictureImagePhoto.TabIndex = 1
         PictureImagePhoto.TabStop = False
         ' 
-        ' BtnInventory
-        ' 
-        BtnInventory.Location = New Point(35, 157)
-        BtnInventory.Name = "BtnInventory"
-        BtnInventory.Size = New Size(372, 174)
-        BtnInventory.TabIndex = 2
-        BtnInventory.Text = "Add Inventory"
-        BtnInventory.UseVisualStyleBackColor = True
-        ' 
         ' BtnEditInventory
         ' 
-        BtnEditInventory.Location = New Point(565, 159)
+        BtnEditInventory.Location = New Point(279, 134)
         BtnEditInventory.Name = "BtnEditInventory"
         BtnEditInventory.Size = New Size(396, 172)
         BtnEditInventory.TabIndex = 3
@@ -73,7 +63,6 @@ Partial Class menu
         ClientSize = New Size(996, 649)
         Controls.Add(BtnCashRegister)
         Controls.Add(BtnEditInventory)
-        Controls.Add(BtnInventory)
         Controls.Add(PictureImagePhoto)
         Name = "menu"
         Text = "menu"
@@ -82,7 +71,6 @@ Partial Class menu
     End Sub
 
     Friend WithEvents PictureImagePhoto As PictureBox
-    Friend WithEvents BtnInventory As Button
     Friend WithEvents BtnEditInventory As Button
     Friend WithEvents BtnCashRegister As Button
 End Class

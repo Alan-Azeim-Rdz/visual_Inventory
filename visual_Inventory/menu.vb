@@ -16,12 +16,6 @@
         End Set
     End Property
 
-    Private Sub BtnInventory_Click(ByVal sender As Object, ByVal e As EventArgs) Handles BtnInventory.Click
-        Dim form1 As New Form1()
-        form1.Show()
-        form1.ReceivedImage = PictureImagePhoto.Image
-    End Sub
-
     Private Sub BtnEditInventory_Click(ByVal sender As Object, ByVal e As EventArgs) Handles BtnEditInventory.Click
         Dim products_Sold As New Edit_Inventory()
         products_Sold.Show()

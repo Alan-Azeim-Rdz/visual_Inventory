@@ -107,7 +107,7 @@ Partial Class inicio
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(991, 640)
+        ClientSize = New Size(965, 405)
         Controls.Add(BtnUploadImage)
         Controls.Add(BtnRegister)
         Controls.Add(BtnLogin)

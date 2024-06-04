@@ -39,10 +39,11 @@ Partial Class CashRegister
         ColumnHeader7 = New ColumnHeader()
         TxtQuantity = New TextBox()
         BtnAdd = New Button()
-        BtnSelection = New Button()
         BtnPdfTicket = New Button()
         BtnTicketExcel = New Button()
         BtnTicketJason = New Button()
+        BtnRemove = New Button()
+        ColumnHeader8 = New ColumnHeader()
         CType(PictureUser, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -63,6 +64,7 @@ Partial Class CashRegister
         LblSelection.Size = New Size(54, 15)
         LblSelection.TabIndex = 1
         LblSelection.Text = "selection"
+        LblSelection.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' Label2
         ' 
@@ -122,10 +124,10 @@ Partial Class CashRegister
         ' 
         ' ListVTicket
         ' 
-        ListVTicket.Columns.AddRange(New ColumnHeader() {ColumnHeader2, ColumnHeader5, ColumnHeader6, ColumnHeader7})
+        ListVTicket.Columns.AddRange(New ColumnHeader() {ColumnHeader2, ColumnHeader5, ColumnHeader6, ColumnHeader7, ColumnHeader8})
         ListVTicket.Location = New Point(12, 210)
         ListVTicket.Name = "ListVTicket"
-        ListVTicket.Size = New Size(528, 398)
+        ListVTicket.Size = New Size(595, 398)
         ListVTicket.TabIndex = 7
         ListVTicket.UseCompatibleStateImageBehavior = False
         ListVTicket.View = View.Details
@@ -159,25 +161,16 @@ Partial Class CashRegister
         ' 
         ' BtnAdd
         ' 
-        BtnAdd.Location = New Point(165, 149)
+        BtnAdd.Location = New Point(216, 137)
         BtnAdd.Name = "BtnAdd"
         BtnAdd.Size = New Size(75, 23)
         BtnAdd.TabIndex = 9
         BtnAdd.Text = "add"
         BtnAdd.UseVisualStyleBackColor = True
         ' 
-        ' BtnSelection
-        ' 
-        BtnSelection.Location = New Point(257, 149)
-        BtnSelection.Name = "BtnSelection"
-        BtnSelection.Size = New Size(75, 23)
-        BtnSelection.TabIndex = 10
-        BtnSelection.Text = "select"
-        BtnSelection.UseVisualStyleBackColor = True
-        ' 
         ' BtnPdfTicket
         ' 
-        BtnPdfTicket.Location = New Point(887, 633)
+        BtnPdfTicket.Location = New Point(908, 633)
         BtnPdfTicket.Name = "BtnPdfTicket"
         BtnPdfTicket.Size = New Size(75, 50)
         BtnPdfTicket.TabIndex = 11
@@ -186,7 +179,7 @@ Partial Class CashRegister
         ' 
         ' BtnTicketExcel
         ' 
-        BtnTicketExcel.Location = New Point(775, 633)
+        BtnTicketExcel.Location = New Point(806, 633)
         BtnTicketExcel.Name = "BtnTicketExcel"
         BtnTicketExcel.Size = New Size(75, 50)
         BtnTicketExcel.TabIndex = 12
@@ -195,22 +188,35 @@ Partial Class CashRegister
         ' 
         ' BtnTicketJason
         ' 
-        BtnTicketJason.Location = New Point(661, 633)
+        BtnTicketJason.Location = New Point(694, 633)
         BtnTicketJason.Name = "BtnTicketJason"
-        BtnTicketJason.Size = New Size(75, 23)
+        BtnTicketJason.Size = New Size(75, 50)
         BtnTicketJason.TabIndex = 13
         BtnTicketJason.Text = "Print Ticket"
         BtnTicketJason.UseVisualStyleBackColor = True
+        ' 
+        ' BtnRemove
+        ' 
+        BtnRemove.Location = New Point(508, 633)
+        BtnRemove.Name = "BtnRemove"
+        BtnRemove.Size = New Size(75, 23)
+        BtnRemove.TabIndex = 14
+        BtnRemove.Text = "Remove"
+        BtnRemove.UseVisualStyleBackColor = True
+        ' 
+        ' ColumnHeader8
+        ' 
+        ColumnHeader8.Text = "Total"
         ' 
         ' CashRegister
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1159, 695)
+        Controls.Add(BtnRemove)
         Controls.Add(BtnTicketJason)
         Controls.Add(BtnTicketExcel)
         Controls.Add(BtnPdfTicket)
-        Controls.Add(BtnSelection)
         Controls.Add(BtnAdd)
         Controls.Add(TxtQuantity)
         Controls.Add(ListVTicket)
@@ -244,8 +250,9 @@ Partial Class CashRegister
     Friend WithEvents ColumnHeader7 As ColumnHeader
     Friend WithEvents TxtQuantity As TextBox
     Friend WithEvents BtnAdd As Button
-    Friend WithEvents BtnSelection As Button
     Friend WithEvents BtnPdfTicket As Button
     Friend WithEvents BtnTicketExcel As Button
     Friend WithEvents BtnTicketJason As Button
+    Friend WithEvents BtnRemove As Button
+    Friend WithEvents ColumnHeader8 As ColumnHeader
 End Class
