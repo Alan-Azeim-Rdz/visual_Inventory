@@ -41,6 +41,9 @@ Partial Class Edit_Inventory
         BtnDelete = New Button()
         BtnQuantityProductTotal = New Button()
         ComBoxElection = New ComboBox()
+        ColumnHeader2 = New ColumnHeader()
+        CheckBoxPerecedero = New CheckBox()
+        TxtExpirationDate = New TextBox()
         CType(PictureUser, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -92,10 +95,10 @@ Partial Class Edit_Inventory
         ' 
         ' ListViewDataProduct
         ' 
-        ListViewDataProduct.Columns.AddRange(New ColumnHeader() {ColumnHeader1, Price, ColumnHeader3, ColumnHeader4})
+        ListViewDataProduct.Columns.AddRange(New ColumnHeader() {ColumnHeader1, Price, ColumnHeader3, ColumnHeader4, ColumnHeader2})
         ListViewDataProduct.Location = New Point(538, 84)
         ListViewDataProduct.Name = "ListViewDataProduct"
-        ListViewDataProduct.Size = New Size(565, 582)
+        ListViewDataProduct.Size = New Size(716, 582)
         ListViewDataProduct.TabIndex = 17
         ListViewDataProduct.UseCompatibleStateImageBehavior = False
         ListViewDataProduct.View = View.Details
@@ -192,11 +195,35 @@ Partial Class Edit_Inventory
         ComBoxElection.Size = New Size(121, 23)
         ComBoxElection.TabIndex = 26
         ' 
+        ' ColumnHeader2
+        ' 
+        ColumnHeader2.Text = "expiration date"
+        ColumnHeader2.Width = 140
+        ' 
+        ' CheckBoxPerecedero
+        ' 
+        CheckBoxPerecedero.AutoSize = True
+        CheckBoxPerecedero.Location = New Point(364, 138)
+        CheckBoxPerecedero.Name = "CheckBoxPerecedero"
+        CheckBoxPerecedero.Size = New Size(85, 19)
+        CheckBoxPerecedero.TabIndex = 27
+        CheckBoxPerecedero.Text = "Perecedero"
+        CheckBoxPerecedero.UseVisualStyleBackColor = True
+        ' 
+        ' TxtExpirationDate
+        ' 
+        TxtExpirationDate.Location = New Point(364, 163)
+        TxtExpirationDate.Name = "TxtExpirationDate"
+        TxtExpirationDate.Size = New Size(100, 23)
+        TxtExpirationDate.TabIndex = 28
+        ' 
         ' Edit_Inventory
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1189, 794)
+        ClientSize = New Size(1411, 794)
+        Controls.Add(TxtExpirationDate)
+        Controls.Add(CheckBoxPerecedero)
         Controls.Add(ComBoxElection)
         Controls.Add(BtnQuantityProductTotal)
         Controls.Add(BtnDelete)
@@ -238,4 +265,7 @@ Partial Class Edit_Inventory
     Friend WithEvents BtnDelete As Button
     Friend WithEvents BtnQuantityProductTotal As Button
     Friend WithEvents ComBoxElection As ComboBox
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents CheckBoxPerecedero As CheckBox
+    Friend WithEvents TxtExpirationDate As TextBox
 End Class

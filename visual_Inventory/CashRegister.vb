@@ -62,7 +62,6 @@ Public Class CashRegister
 
 
     Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles BtnAdd.Click
-
         If LstViewDataProductos.SelectedItems.Count > 0 Then
             ' Obtener el elemento seleccionado
             Dim selectedItem = LstViewDataProductos.SelectedItems(0)
@@ -72,13 +71,13 @@ Public Class CashRegister
             Try
                 Dim quantityToSell As Integer = Convert.ToInt32(TxtQuantity.Text)
 
-                ' Validate quantity to sell against available stock
+                ' Validar la cantidad a vender contra el stock disponible
                 If quantityToSell <= selectedProductStock Then
                     ' Verificar si se alcanza la cantidad para aplicar el descuento
                     Dim discountQuantityThreshold As Integer = 30
 
                     If quantityToSell >= discountQuantityThreshold Then
-                        Dim discountPercentage As Double = 0.1
+                        Dim discountPercentage As Double = 0.1 ' 10% de descuento
                         Dim remainingQuantity As Integer = quantityToSell Mod discountQuantityThreshold
 
                         ' Crear un producto con descuento
@@ -92,26 +91,28 @@ Public Class CashRegister
                         LblResult.Text = "$ " & Convert.ToString(resultFinish)
 
                         ' Agregar el producto con descuento al ticket
-                        Dim itemDiscounted As New ListViewItem(selectedProduct.Name & " (con descuento)")
-                        MessageBox.Show("el prodcuto " & selectedProduct.Name & " tiene un descuento del 10% en cada producto por comprar mas de 30 de estos")
+                        Dim itemDiscounted As New ListViewItem(discountedProduct.Name & " (con descuento)")
+                        MessageBox.Show("El producto " & selectedProduct.Name & " tiene un descuento del 10% en cada producto por comprar más de 30 de estos")
                         ListVTicket.Items.Add(itemDiscounted)
                         itemDiscounted.SubItems.Add(discountedProduct.Price.ToString())
                         itemDiscounted.SubItems.Add(quantityToSell.ToString())
                         itemDiscounted.SubItems.Add(mark) ' Assuming discount is 0
                         itemDiscounted.SubItems.Add(Convert.ToString(discountedTotal))
+                        itemDiscounted.SubItems.Add(selectedItem.SubItems(4).Text)
                     Else
-                        ' Update total result
+                        ' Actualizar total result
                         resultFinish += CalculateTotalResult(selectedProduct, quantityToSell)
                         LblResult.Text = "$ " & Convert.ToString(resultFinish)
 
-                        ' Check if the product is discounted
+                        ' Verificar si el producto tiene descuento
                         If TypeOf selectedProduct Is DiscountedProduct_Sale Then
-                            ' Calculate discounted total result
-                            resultFinish += CalculateTotalResult(selectedProduct, quantityToSell, CType(selectedProduct, DiscountedProduct_Sale).DiscountPercentage)
+                            Dim discountedProduct As DiscountedProduct_Sale = CType(selectedProduct, DiscountedProduct_Sale)
+                            ' Calcular el total con descuento
+                            resultFinish += CalculateTotalResult(selectedProduct, quantityToSell, discountedProduct.DiscountPercentage)
                             LblResult.Text = "$ " & Convert.ToString(resultFinish)
                         End If
 
-                        ' Update ListView ticket
+                        ' Actualizar ListView ticket
                         Dim itemTicket As New ListViewItem(selectedProduct.Name)
                         ListVTicket.Items.Add(itemTicket)
                         itemTicket.SubItems.Add(selectedProduct.Price.ToString())
@@ -120,32 +121,33 @@ Public Class CashRegister
                         itemTicket.SubItems.Add(Convert.ToString(CalculateTotalResult(selectedProduct, quantityToSell)))
                     End If
 
-                    ' Update product stock
-                    selectedProduct.ReduceStock((quantityToSell))
+                    ' Actualizar stock del producto
+                    selectedProduct.ReduceStock(quantityToSell)
                     selectedProductStock -= quantityToSell
 
-                    ' Update ListView product stock
+                    ' Actualizar ListView stock del producto
                     LstViewDataProductos.SelectedItems(0).SubItems(2).Text = selectedProductStock.ToString()
 
-                    ' Update product file
+                    ' Actualizar archivo del producto
                     UpdateProductFile()
                 Else
                     MessageBox.Show("La cantidad seleccionada excede la cantidad disponible.")
                 End If
-            Catch generatedExceptionName As FormatException
+            Catch ex As FormatException
                 MessageBox.Show("El valor ingresado no es válido. Por favor, ingresa un número entero válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
 
             Using writer As New StreamWriter(Url_txt_productos)
                 For Each item As ListViewItem In LstViewDataProductos.Items
                     ' Construir una cadena con todos los datos del elemento separados por espacios
-                    Dim line As String = $"{item.Text} {item.SubItems(1).Text} {item.SubItems(2).Text} {item.SubItems(3).Text}"
+                    Dim line As String = $"{item.Text} {item.SubItems(1).Text} {item.SubItems(2).Text} {item.SubItems(3).Text} {item.SubItems(4).Text}"
                     writer.WriteLine(line) ' Escribir la línea en el archivo
                 Next
             End Using
         Else
             MessageBox.Show("Seleccione un ítem para editar")
         End If
+
 
     End Sub
 

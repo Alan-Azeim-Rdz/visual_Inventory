@@ -37,13 +37,14 @@ Partial Class CashRegister
         ColumnHeader5 = New ColumnHeader()
         ColumnHeader6 = New ColumnHeader()
         ColumnHeader7 = New ColumnHeader()
+        ColumnHeader8 = New ColumnHeader()
         TxtQuantity = New TextBox()
         BtnAdd = New Button()
         BtnPdfTicket = New Button()
         BtnTicketExcel = New Button()
         BtnTicketJason = New Button()
         BtnRemove = New Button()
-        ColumnHeader8 = New ColumnHeader()
+        ColumnHeader9 = New ColumnHeader()
         CType(PictureUser, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -59,7 +60,7 @@ Partial Class CashRegister
         ' LblSelection
         ' 
         LblSelection.AutoSize = True
-        LblSelection.Location = New Point(228, 74)
+        LblSelection.Location = New Point(271, 75)
         LblSelection.Name = "LblSelection"
         LblSelection.Size = New Size(54, 15)
         LblSelection.TabIndex = 1
@@ -94,10 +95,10 @@ Partial Class CashRegister
         ' 
         ' LstViewDataProductos
         ' 
-        LstViewDataProductos.Columns.AddRange(New ColumnHeader() {ColumnHeader1, Price, ColumnHeader3, ColumnHeader4})
+        LstViewDataProductos.Columns.AddRange(New ColumnHeader() {ColumnHeader1, Price, ColumnHeader3, ColumnHeader4, ColumnHeader9})
         LstViewDataProductos.Location = New Point(631, 12)
         LstViewDataProductos.Name = "LstViewDataProductos"
-        LstViewDataProductos.Size = New Size(516, 584)
+        LstViewDataProductos.Size = New Size(667, 584)
         LstViewDataProductos.TabIndex = 6
         LstViewDataProductos.UseCompatibleStateImageBehavior = False
         LstViewDataProductos.View = View.Details
@@ -152,16 +153,20 @@ Partial Class CashRegister
         ColumnHeader7.Text = "Mark"
         ColumnHeader7.Width = 120
         ' 
+        ' ColumnHeader8
+        ' 
+        ColumnHeader8.Text = "Total"
+        ' 
         ' TxtQuantity
         ' 
-        TxtQuantity.Location = New Point(165, 108)
+        TxtQuantity.Location = New Point(208, 109)
         TxtQuantity.Name = "TxtQuantity"
         TxtQuantity.Size = New Size(167, 23)
         TxtQuantity.TabIndex = 8
         ' 
         ' BtnAdd
         ' 
-        BtnAdd.Location = New Point(216, 137)
+        BtnAdd.Location = New Point(259, 138)
         BtnAdd.Name = "BtnAdd"
         BtnAdd.Size = New Size(75, 23)
         BtnAdd.TabIndex = 9
@@ -204,15 +209,16 @@ Partial Class CashRegister
         BtnRemove.Text = "Remove"
         BtnRemove.UseVisualStyleBackColor = True
         ' 
-        ' ColumnHeader8
+        ' ColumnHeader9
         ' 
-        ColumnHeader8.Text = "Total"
+        ColumnHeader9.Text = "expiration date"
+        ColumnHeader9.Width = 140
         ' 
         ' CashRegister
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1159, 695)
+        ClientSize = New Size(1353, 695)
         Controls.Add(BtnRemove)
         Controls.Add(BtnTicketJason)
         Controls.Add(BtnTicketExcel)
@@ -255,4 +261,5 @@ Partial Class CashRegister
     Friend WithEvents BtnTicketJason As Button
     Friend WithEvents BtnRemove As Button
     Friend WithEvents ColumnHeader8 As ColumnHeader
+    Friend WithEvents ColumnHeader9 As ColumnHeader
 End Class
