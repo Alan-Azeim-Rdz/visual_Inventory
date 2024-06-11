@@ -78,46 +78,44 @@ Public Class Edit_Inventory
                             Next
 
                             If Not isDuplicate Then
-                                Dim NewItemLstData As New ListViewItem(Name_without_spaces)
-                                Try
-                                    ListViewDataProduct.Items.Add(NewItemLstData)
+                                Dim producto As IProduct
 
-                                    Dim producto As IProduct
+                                If CheckBoxPerecedero.Checked Then
+                                    Dim expirationDate As DateTime
 
-                                    If CheckBoxPerecedero.Checked Then
-                                        Dim expirationDate As DateTime
-                                        If DateTime.TryParse(TxtExpirationDate.Text, expirationDate) Then
-                                            producto = New Perishable(Convert.ToDouble(TxtPrice.Text), Convert.ToInt32(TxtQuanity.Text), TxtMark.Text, expirationDate)
-                                        Else
-                                            MessageBox.Show("Fecha de caducidad inválida")
+                                    If DateTime.TryParse(DateTimeExpirationDate.Text, expirationDate) Then
+                                        If expirationDate < DateTime.Today Then
+                                            MessageBox.Show("La fecha de caducidad no puede ser anterior a la fecha actual.")
                                             Return
                                         End If
+
+                                        producto = New Perishable(Convert.ToDouble(TxtPrice.Text), Convert.ToDouble(TxtQuanity.Text), TxtMark.Text, expirationDate)
                                     Else
-                                        producto = New Not_Perishable(Convert.ToDouble(TxtPrice.Text), Convert.ToInt32(TxtQuanity.Text), TxtMark.Text)
+                                        ' Maneja el caso en que la entrada no se pudo convertir a una fecha válida
+                                        MessageBox.Show("Por favor, ingresa una fecha de caducidad válida.")
                                     End If
+                                Else
+                                    producto = New Not_Perishable(Convert.ToDouble(TxtPrice.Text), Convert.ToInt32(TxtQuanity.Text), TxtMark.Text)
+                                End If
 
-                                    NewItemLstData.SubItems.Add(Convert.ToString(producto.Price))
-                                    NewItemLstData.SubItems.Add(Convert.ToString(producto.Quantity))
-                                    NewItemLstData.SubItems.Add(Mark_without_spaces)
+                                Dim NewItemLstData As New ListViewItem(Name_without_spaces)
+                                ListViewDataProduct.Items.Add(NewItemLstData)
 
-                                    If TypeOf producto Is Perishable Then
-                                        NewItemLstData.SubItems.Add(CType(producto, Perishable).ExpirationDate.ToString("yyyy-MM-dd"))
-                                    Else
-                                        NewItemLstData.SubItems.Add("N/A")
-                                    End If
+                                NewItemLstData.SubItems.Add(Convert.ToString(producto.Price))
+                                NewItemLstData.SubItems.Add(Convert.ToString(producto.Quantity))
+                                NewItemLstData.SubItems.Add(Mark_without_spaces)
 
-                                    Dim product_for_txt As String = Name_without_spaces & " " & producto.ToString() & " N/A"
-                                    Try
-                                        File.AppendAllText(Url_txt_productos, product_for_txt & Environment.NewLine)
-                                    Catch ex As Exception
-                                        MessageBox.Show("Error al guardar el archivo: " & ex.Message)
-                                    End Try
-                                Catch ex As InvalidCastException
-                                    ListViewDataProduct.Items.Remove(NewItemLstData)
-                                    MessageBox.Show("Alguno de los datos enviados está mal. Por favor verifique su escritura")
-                                Catch ex As FormatException
-                                    ListViewDataProduct.Items.Remove(NewItemLstData)
-                                    MessageBox.Show("Alguno de los datos enviados está mal. Por favor verifique su escritura")
+                                If TypeOf producto Is Perishable Then
+                                    NewItemLstData.SubItems.Add(DirectCast(producto, Perishable).ExpirationDate.ToString("yyyy-MM-dd"))
+                                Else
+                                    NewItemLstData.SubItems.Add("N/A")
+                                End If
+
+                                Dim product_for_txt As String = Name_without_spaces & " " & producto.ToString() & " N/A"
+                                Try
+                                    File.AppendAllText(Url_txt_productos, product_for_txt & Environment.NewLine)
+                                Catch ex As Exception
+                                    MessageBox.Show("Error al guardar el archivo: " & ex.Message)
                                 End Try
                             Else
                                 MessageBox.Show("El producto ya existe en la lista.")
@@ -130,37 +128,31 @@ Public Class Edit_Inventory
                         TxtMark.Clear()
                         TxtPrice.Clear()
                         TxtQuanity.Clear()
-                        TxtExpirationDate.Clear()
+                        DateTimeExpirationDate.ResetText()
 
                     Case "Edit"
                         ListViewDataProduct.Enabled = True
                         If Not String.IsNullOrEmpty(TxtAddName.Text) AndAlso Not String.IsNullOrEmpty(TxtPrice.Text) AndAlso Not String.IsNullOrEmpty(TxtQuanity.Text) AndAlso Not String.IsNullOrEmpty(TxtMark.Text) Then
                             If ListViewDataProduct.SelectedItems.Count > 0 Then
-                                ' Obtener el elemento seleccionado
                                 Dim Name_without_spaces As String = TxtAddName.Text.Replace(" ", "-")
                                 Dim Mark_without_spaces As String = TxtMark.Text.Replace(" ", "-")
-                                Dim selectedItem = ListViewDataProduct.SelectedItems(0)
+                                Dim selectedItem As ListViewItem = ListViewDataProduct.SelectedItems(0)
 
-                                ' Actualizar los valores en los subitems del elemento seleccionado
                                 selectedItem.Text = Name_without_spaces
                                 selectedItem.SubItems(1).Text = TxtPrice.Text
                                 selectedItem.SubItems(2).Text = TxtQuanity.Text
                                 selectedItem.SubItems(3).Text = TxtMark.Text
 
-                                ' Verificar si el producto es perecedero y actualizar la fecha de caducidad
-                                Dim expirationDateText As String = If(CheckBoxPerecedero.Checked, TxtExpirationDate.Text, "N/A")
+                                Dim expirationDateText As String = If(CheckBoxPerecedero.Checked, DateTimeExpirationDate.Text, "N/A")
                                 selectedItem.SubItems(4).Text = expirationDateText
 
                                 Using writer As New StreamWriter(Url_txt_productos)
-                                    ' Recorre los elementos del ListView y escribe cada dato en una línea
                                     For Each item As ListViewItem In ListViewDataProduct.Items
-                                        ' Construir una cadena con todos los datos del elemento separados por espacios
                                         Dim line As String = $"{item.Text} {item.SubItems(1).Text} {item.SubItems(2).Text} {item.SubItems(3).Text} {item.SubItems(4).Text}"
                                         writer.WriteLine(line)
                                     Next
                                 End Using
 
-                                ' Opcionalmente, puedes mostrar un mensaje de confirmación
                                 MessageBox.Show("El producto ha sido actualizado correctamente.")
                             Else
                                 MessageBox.Show("Seleccione un ítem para editar")
@@ -176,8 +168,9 @@ Public Class Edit_Inventory
                 End Select
             End If
         Catch ex As Exception
-            MessageBox.Show("Ha ocurrido un error, inténtalo de nuevo.")
+            MessageBox.Show("Ha ocurrido un error al añadir el producto: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+
     End Sub
 
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
@@ -229,10 +222,9 @@ Public Class Edit_Inventory
             Dim expirationDateText As String = selectedItem.SubItems(4).Text
             If Not String.IsNullOrEmpty(expirationDateText) AndAlso expirationDateText <> "N/A" Then
                 CheckBoxPerecedero.Checked = True
-                TxtExpirationDate.Text = expirationDateText
+                DateTimeExpirationDate.Text = expirationDateText
             Else
                 CheckBoxPerecedero.Checked = False
-                TxtExpirationDate.Text = "N/A" ' Establece "N/A" como valor predeterminado
             End If
 
             ListViewDataProduct.Enabled = False

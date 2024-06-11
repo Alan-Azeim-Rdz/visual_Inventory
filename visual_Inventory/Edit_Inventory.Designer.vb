@@ -33,6 +33,7 @@ Partial Class Edit_Inventory
         Price = New ColumnHeader()
         ColumnHeader3 = New ColumnHeader()
         ColumnHeader4 = New ColumnHeader()
+        ColumnHeader2 = New ColumnHeader()
         PictureUser = New PictureBox()
         Label4 = New Label()
         Label3 = New Label()
@@ -41,54 +42,59 @@ Partial Class Edit_Inventory
         BtnDelete = New Button()
         BtnQuantityProductTotal = New Button()
         ComBoxElection = New ComboBox()
-        ColumnHeader2 = New ColumnHeader()
         CheckBoxPerecedero = New CheckBox()
-        TxtExpirationDate = New TextBox()
+        DateTimeExpirationDate = New DateTimePicker()
         CType(PictureUser, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' TxtMark
         ' 
-        TxtMark.Location = New Point(193, 275)
+        TxtMark.Location = New Point(221, 367)
+        TxtMark.Margin = New Padding(3, 4, 3, 4)
         TxtMark.Name = "TxtMark"
-        TxtMark.Size = New Size(100, 23)
+        TxtMark.Size = New Size(114, 27)
         TxtMark.TabIndex = 23
         ' 
         ' TxtQuanity
         ' 
-        TxtQuanity.Location = New Point(193, 217)
+        TxtQuanity.Location = New Point(221, 289)
+        TxtQuanity.Margin = New Padding(3, 4, 3, 4)
         TxtQuanity.Name = "TxtQuanity"
-        TxtQuanity.Size = New Size(100, 23)
+        TxtQuanity.Size = New Size(114, 27)
         TxtQuanity.TabIndex = 22
         ' 
         ' TxtPrice
         ' 
-        TxtPrice.Location = New Point(193, 178)
+        TxtPrice.Location = New Point(221, 237)
+        TxtPrice.Margin = New Padding(3, 4, 3, 4)
         TxtPrice.Name = "TxtPrice"
-        TxtPrice.Size = New Size(100, 23)
+        TxtPrice.Size = New Size(114, 27)
         TxtPrice.TabIndex = 21
         ' 
         ' TxtAddName
         ' 
-        TxtAddName.Location = New Point(193, 134)
+        TxtAddName.Location = New Point(221, 179)
+        TxtAddName.Margin = New Padding(3, 4, 3, 4)
         TxtAddName.Name = "TxtAddName"
-        TxtAddName.Size = New Size(100, 23)
+        TxtAddName.Size = New Size(114, 27)
         TxtAddName.TabIndex = 20
         ' 
         ' BtnCancel
         ' 
-        BtnCancel.Location = New Point(218, 381)
+        BtnCancel.Location = New Point(249, 508)
+        BtnCancel.Margin = New Padding(3, 4, 3, 4)
         BtnCancel.Name = "BtnCancel"
-        BtnCancel.Size = New Size(75, 23)
+        BtnCancel.Size = New Size(86, 31)
         BtnCancel.TabIndex = 19
         BtnCancel.Text = "Cancele"
         BtnCancel.UseVisualStyleBackColor = True
         ' 
         ' Btnaccept
         ' 
-        Btnaccept.Location = New Point(132, 381)
+        Btnaccept.Location = New Point(151, 508)
+        Btnaccept.Margin = New Padding(3, 4, 3, 4)
         Btnaccept.Name = "Btnaccept"
-        Btnaccept.Size = New Size(75, 23)
+        Btnaccept.Size = New Size(86, 31)
         Btnaccept.TabIndex = 18
         Btnaccept.Text = "Accept"
         Btnaccept.UseVisualStyleBackColor = True
@@ -96,9 +102,10 @@ Partial Class Edit_Inventory
         ' ListViewDataProduct
         ' 
         ListViewDataProduct.Columns.AddRange(New ColumnHeader() {ColumnHeader1, Price, ColumnHeader3, ColumnHeader4, ColumnHeader2})
-        ListViewDataProduct.Location = New Point(538, 84)
+        ListViewDataProduct.Location = New Point(615, 112)
+        ListViewDataProduct.Margin = New Padding(3, 4, 3, 4)
         ListViewDataProduct.Name = "ListViewDataProduct"
-        ListViewDataProduct.Size = New Size(716, 582)
+        ListViewDataProduct.Size = New Size(818, 775)
         ListViewDataProduct.TabIndex = 17
         ListViewDataProduct.UseCompatibleStateImageBehavior = False
         ListViewDataProduct.View = View.Details
@@ -123,11 +130,17 @@ Partial Class Edit_Inventory
         ColumnHeader4.Text = "Mark"
         ColumnHeader4.Width = 120
         ' 
+        ' ColumnHeader2
+        ' 
+        ColumnHeader2.Text = "expiration date"
+        ColumnHeader2.Width = 140
+        ' 
         ' PictureUser
         ' 
-        PictureUser.Location = New Point(85, 52)
+        PictureUser.Location = New Point(97, 69)
+        PictureUser.Margin = New Padding(3, 4, 3, 4)
         PictureUser.Name = "PictureUser"
-        PictureUser.Size = New Size(64, 50)
+        PictureUser.Size = New Size(73, 67)
         PictureUser.SizeMode = PictureBoxSizeMode.StretchImage
         PictureUser.TabIndex = 16
         PictureUser.TabStop = False
@@ -135,53 +148,55 @@ Partial Class Edit_Inventory
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(96, 283)
+        Label4.Location = New Point(110, 377)
         Label4.Name = "Label4"
-        Label4.Size = New Size(34, 15)
+        Label4.Size = New Size(42, 20)
         Label4.TabIndex = 15
         Label4.Text = "Mark"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(96, 225)
+        Label3.Location = New Point(110, 300)
         Label3.Name = "Label3"
-        Label3.Size = New Size(53, 15)
+        Label3.Size = New Size(65, 20)
         Label3.TabIndex = 14
         Label3.Text = "Quantity"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(96, 186)
+        Label2.Location = New Point(110, 248)
         Label2.Name = "Label2"
-        Label2.Size = New Size(33, 15)
+        Label2.Size = New Size(41, 20)
         Label2.TabIndex = 13
         Label2.Text = "Price"
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(96, 137)
+        Label1.Location = New Point(110, 183)
         Label1.Name = "Label1"
-        Label1.Size = New Size(39, 15)
+        Label1.Size = New Size(49, 20)
         Label1.TabIndex = 12
         Label1.Text = "Name"
         ' 
         ' BtnDelete
         ' 
-        BtnDelete.Location = New Point(173, 410)
+        BtnDelete.Location = New Point(198, 547)
+        BtnDelete.Margin = New Padding(3, 4, 3, 4)
         BtnDelete.Name = "BtnDelete"
-        BtnDelete.Size = New Size(75, 23)
+        BtnDelete.Size = New Size(86, 31)
         BtnDelete.TabIndex = 24
         BtnDelete.Text = "Delete"
         BtnDelete.UseVisualStyleBackColor = True
         ' 
         ' BtnQuantityProductTotal
         ' 
-        BtnQuantityProductTotal.Location = New Point(388, 643)
+        BtnQuantityProductTotal.Location = New Point(443, 857)
+        BtnQuantityProductTotal.Margin = New Padding(3, 4, 3, 4)
         BtnQuantityProductTotal.Name = "BtnQuantityProductTotal"
-        BtnQuantityProductTotal.Size = New Size(144, 23)
+        BtnQuantityProductTotal.Size = New Size(165, 31)
         BtnQuantityProductTotal.TabIndex = 25
         BtnQuantityProductTotal.Text = "Quantity total product"
         BtnQuantityProductTotal.UseVisualStyleBackColor = True
@@ -190,39 +205,37 @@ Partial Class Edit_Inventory
         ' 
         ComBoxElection.FormattingEnabled = True
         ComBoxElection.Items.AddRange(New Object() {"Add", "Edit"})
-        ComBoxElection.Location = New Point(147, 352)
+        ComBoxElection.Location = New Point(168, 469)
+        ComBoxElection.Margin = New Padding(3, 4, 3, 4)
         ComBoxElection.Name = "ComBoxElection"
-        ComBoxElection.Size = New Size(121, 23)
+        ComBoxElection.Size = New Size(138, 28)
         ComBoxElection.TabIndex = 26
-        ' 
-        ' ColumnHeader2
-        ' 
-        ColumnHeader2.Text = "expiration date"
-        ColumnHeader2.Width = 140
         ' 
         ' CheckBoxPerecedero
         ' 
         CheckBoxPerecedero.AutoSize = True
-        CheckBoxPerecedero.Location = New Point(364, 138)
+        CheckBoxPerecedero.Location = New Point(416, 184)
+        CheckBoxPerecedero.Margin = New Padding(3, 4, 3, 4)
         CheckBoxPerecedero.Name = "CheckBoxPerecedero"
-        CheckBoxPerecedero.Size = New Size(85, 19)
+        CheckBoxPerecedero.Size = New Size(105, 24)
         CheckBoxPerecedero.TabIndex = 27
         CheckBoxPerecedero.Text = "Perecedero"
         CheckBoxPerecedero.UseVisualStyleBackColor = True
         ' 
-        ' TxtExpirationDate
+        ' DateTimeExpirationDate
         ' 
-        TxtExpirationDate.Location = New Point(364, 163)
-        TxtExpirationDate.Name = "TxtExpirationDate"
-        TxtExpirationDate.Size = New Size(100, 23)
-        TxtExpirationDate.TabIndex = 28
+        DateTimeExpirationDate.Format = DateTimePickerFormat.Short
+        DateTimeExpirationDate.Location = New Point(405, 215)
+        DateTimeExpirationDate.Name = "DateTimeExpirationDate"
+        DateTimeExpirationDate.Size = New Size(127, 27)
+        DateTimeExpirationDate.TabIndex = 29
         ' 
         ' Edit_Inventory
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1411, 794)
-        Controls.Add(TxtExpirationDate)
+        ClientSize = New Size(1613, 1055)
+        Controls.Add(DateTimeExpirationDate)
         Controls.Add(CheckBoxPerecedero)
         Controls.Add(ComBoxElection)
         Controls.Add(BtnQuantityProductTotal)
@@ -239,6 +252,7 @@ Partial Class Edit_Inventory
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "Edit_Inventory"
         Text = "Edit_Inventory"
         CType(PictureUser, ComponentModel.ISupportInitialize).EndInit()
@@ -267,5 +281,5 @@ Partial Class Edit_Inventory
     Friend WithEvents ComBoxElection As ComboBox
     Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents CheckBoxPerecedero As CheckBox
-    Friend WithEvents TxtExpirationDate As TextBox
+    Private WithEvents DateTimeExpirationDate As DateTimePicker
 End Class
